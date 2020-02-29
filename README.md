@@ -30,5 +30,14 @@ WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
 ```
 
-## Interface 
+## Interface Image
+<img width="1044" alt="interface" src="https://user-images.githubusercontent.com/59889277/75614905-61b15180-5b0b-11ea-8894-ec3c3e66b139.png">
 
+
+## Prompt Image
+<img width="1026" alt="prompt" src="https://user-images.githubusercontent.com/59889277/75614907-6249e800-5b0b-11ea-925b-fca3e6467add.png">
+
+
+## Generated Password Image
+
+<img width="1020" alt="password" src="https://user-images.githubusercontent.com/59889277/75614906-6249e800-5b0b-11ea-8399-6f090850ebcf.png">
