@@ -1,33 +1,58 @@
 //Variables
-var confirmUpper;
-var confirmLower;
-var confirmNumerical;
-var confirmSpecial;
+var confirmUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var confirmLower = "abcdefghijklmnopqrstuvwxyz";
+var confirmNumerical = "0123456789";
+var confirmSpecial = "~!@#$%^&*()_+";
+var password = "";
 
-//Password elements
-upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-lower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-numerical = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-special = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
+var button = document.getElementById("generate");
 
 //First Click Event
-function generatePassword() {
+button.addEventListener("click", generate);
 
+function addCase(type, selectedCase) {
+    return selectedCase + type;
 }
 
+function generate() {
+    password = "";
+    getLength = prompt("How long will your new password be? Please enter a number between 8 and 128.");
 
-//prompt for password length enter between 8 or 128
+    if ((getLength < 8) || (getLength > 128)) {
+        alert("Try again. Please enter a number between 8 and 128.");
+        generate();
+        return;
+    } 
 
-//upper case letters ok or cancel
 
-//lower case letters ok or cancel
+var userNumerical = confirm("Do you want your password to include numbers?");
+var userUpper = confirm("Do you want your password to include upper case?");
+var userLower = confirm("Do you want your password to include lower case?");
+var userSpecial = confirm("Do you want your password to include special characters?");
 
-//numerical ok or cancel
+var selectedCase = "";
 
-//characters ok or cancel
+    if (userUpper === true) {
+        selectedCase = addCase(confirmUpper, selectedCase);
+    }
+    if (userLower === true) {
+        selectedCase = addCase(confirmLower, selectedCase);
+    }
+    if (userNumerical === true) {
+        selectedCase = addCase(confirmNumerical, selectedCase);
+    }
+    if (userSpecial === true) {
+        selectedCase = addCase(confirmSpecial, selectedCase);
+    }
 
-//generate password
+    for (var i = 0; i <= getLength; i++) {
 
+        password = password + selectedCase.charAt(Math.floor((Math.random() * selectedCase.length) - 1));
+    }
+    selectedCase = ""; 
+    
+    document.getElementById("password").textContent = password;
+}
 
 
 
